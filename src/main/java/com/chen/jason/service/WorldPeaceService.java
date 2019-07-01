@@ -1,6 +1,8 @@
 package com.chen.jason.service;
 
+import com.chen.jason.dao.WorldPeaceMapper;
 import com.chen.jason.model.WorldPeace;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,15 +11,28 @@ import java.util.List;
  * Created on 2019/3/30. By CenJS
  */
 @Service
-public interface WorldPeaceService {
+public class WorldPeaceService {
+    @Autowired
+    private WorldPeaceMapper worldPeaceMapper;
+    
+    public int deleteByPrimaryKey(Integer id) {
+        return worldPeaceMapper.deleteByPrimaryKey(id);
+    }
 
-    int deleteByPrimaryKey(Integer id);
+    public int insert(WorldPeace worldPeace) {
+        return worldPeaceMapper.insert(worldPeace);
+    }
 
-    int insert(WorldPeace record);
+    public WorldPeace selectByPrimaryKey(Integer id) {
+        return worldPeaceMapper.selectByPrimaryKey(id);
+    }
 
-    WorldPeace selectByPrimaryKey(Integer id);
+    public List<WorldPeace> selectAll() {
+        return worldPeaceMapper.selectAll();
+    }
 
-    List<WorldPeace> selectAll();
+    public int updateByPrimaryKey(WorldPeace worldPeace) {
+        return worldPeaceMapper.updateByPrimaryKey(worldPeace);
+    }
 
-    int updateByPrimaryKey(WorldPeace record);
 }

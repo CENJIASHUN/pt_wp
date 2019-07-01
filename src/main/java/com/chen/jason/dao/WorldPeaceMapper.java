@@ -1,8 +1,11 @@
 package com.chen.jason.dao;
 
 import com.chen.jason.model.WorldPeace;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public interface WorldPeaceMapper {
     int deleteByPrimaryKey(Integer id);
 

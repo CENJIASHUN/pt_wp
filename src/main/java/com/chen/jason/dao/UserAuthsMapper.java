@@ -1,8 +1,11 @@
 package com.chen.jason.dao;
 
 import com.chen.jason.model.UserAuths;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public interface UserAuthsMapper {
     int deleteByPrimaryKey(Integer id);
 

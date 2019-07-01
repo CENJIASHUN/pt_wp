@@ -43,9 +43,9 @@
     </springProfile>
 
     <!-- logback为java中的包 -->
-    <logger name="com.chen.jason.controller.UserController"/>
+    <logger name="com.chen.jason.controller.UserDetailsController"/>
     <!--logback.LogbackDemo：类的全路径 -->
-    <logger name="com.chen.jason.controller.UserController.UserController" level="WARN" additivity="false">
+    <logger name="com.chen.jason.controller.UserDetailsController.UserController" level="WARN" additivity="false">
         <appender-ref ref="console"/>
     </logger>
 </configuration>
