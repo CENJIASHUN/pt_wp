@@ -1,11 +1,11 @@
 package com.chen.jason.utils;
 
+
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created on 2019/3/31. By CenJS

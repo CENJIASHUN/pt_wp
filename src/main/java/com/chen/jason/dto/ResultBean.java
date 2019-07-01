@@ -1,10 +1,9 @@
 package com.chen.jason.dto;
 
 import lombok.Data;
+import tk.mybatis.mapper.util.StringUtil;
 
 import java.io.Serializable;
-import com.chen.jason.utils.Enumeration;
-import tk.mybatis.mapper.util.StringUtil;
 
 @Data
 public class ResultBean<T> implements Serializable {
