@@ -36,4 +36,16 @@ public class UserDetailsService {
         return userDetailsMapper.updateByPrimaryKey(user);
     }
 
+    public UserDetails userLogin(String account, String password) {
+        return userDetailsMapper.userlogin(account,password);
+    }
+
+    public int userRegister(UserDetails userDetails) {
+        return userDetailsMapper.insert(userDetails);
+    }
+
+    public UserDetails selectByAccount(String account) {
+        return userDetailsMapper.selectByAccount(account);
+    }
+
 }

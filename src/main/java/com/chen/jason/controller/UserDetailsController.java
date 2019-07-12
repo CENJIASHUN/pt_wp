@@ -11,15 +11,21 @@ import net.sf.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
  * Created on 2019/3/30. By CenJS
  */
 @Api(tags = "【用户详情UserDetails】")
-@RestController
+//@RestController
+@Controller
 @RequestMapping("/UserDetails")
 public class UserDetailsController {
 
@@ -29,15 +35,65 @@ public class UserDetailsController {
     private UserDetailsService userDetailsService;
 
 
+    @GetMapping("/helloWord")
+    public String hello() {
+        return "thymeleaf/HelloWord";
+    }
+
+    @ApiOperation(value = "登录")
+    @GetMapping("/userLogin")
+    public String userLogin(@RequestParam("account") String account,
+                                  @RequestParam("password") String password,ModelMap map) {
+        LOG.info("账号密码"+account+password);
+        UserDetails userDetails = userDetailsService.userLogin(account, password);
+        System.out.println(userDetails);
+        if (userDetails!=null){
+            map.addAttribute("name",userDetails.getUserName());
+            return "thymeleaf/Hello";
+        }
+        return  "thymeleaf/HelloWord";
+    }
+
+    @ApiOperation(value = "注册")
+    @GetMapping("/userRegister")
+    public String userRegister(
+            @RequestParam("account") String account,
+            @RequestParam("password") String password,
+            @RequestParam("username") String username,
+//            @RequestParam("code") String code,
+            ModelMap map
+    ) {
+        UserDetails localUser = userDetailsService.selectByAccount(account);
+        if (localUser!=null){
+            ResultBean resultBean = new ResultBean();
+            resultBean.setRet_code(1);
+            resultBean.setRet_info("该手机号已注册!");
+            map.addAttribute("resultBean",resultBean);
+            return "thymeleaf/Hello";
+        }else {
+            UserDetails userDetails = new UserDetails();
+            userDetails.setAccount(account);
+            userDetails.setPassword(password);
+            userDetails.setUserName(username);
+            System.out.println(userDetails);
+            userDetailsService.userRegister(userDetails);
+            System.out.println(userDetails);
+            map.addAttribute("name",userDetails.getUserName());
+            return "thymeleaf/Hello";
+        }
+    }
+
     @ApiOperation(value = "获取所有用户的详细信息")
     @PostMapping("/selectAllUserDetails")
-    public ResultBean<List<UserDetails>> selectAllUserDetails() throws Exception {
+    @ResponseBody
+    public ResultBean<List<UserDetails>> selectAllUserDetails(){
         List<UserDetails> userDetailsList = userDetailsService.selectAllUserDetails();
         return new ResultBean<>(userDetailsList);
     }
 
     @ApiOperation(value = "加密-获取所有用户信息")
     @PostMapping("/selectAllUserAllByAES")
+    @ResponseBody
     public ResultBean<String> selectAllUserAllByAES() throws Exception {
         List<UserDetails> result = userDetailsService.selectAllUserDetails();
         JSONArray result2 = JSONArray.fromObject(result);

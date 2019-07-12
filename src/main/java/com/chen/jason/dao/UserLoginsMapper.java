@@ -2,18 +2,10 @@ package com.chen.jason.dao;
 
 import com.chen.jason.model.UserLogins;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
+import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.common.MySqlMapper;
 
 @Component
-public interface UserLoginsMapper {
-    int deleteByPrimaryKey(Integer id);
+public interface UserLoginsMapper extends Mapper<UserLogins>, MySqlMapper<UserLogins> {
 
-    int insert(UserLogins record);
-
-    UserLogins selectByPrimaryKey(Integer id);
-
-    List<UserLogins> selectAll();
-
-    int updateByPrimaryKey(UserLogins record);
 }

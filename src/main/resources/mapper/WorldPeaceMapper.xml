@@ -4,46 +4,7 @@
   <resultMap id="BaseResultMap" type="com.chen.jason.model.WorldPeace">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="birth" jdbcType="DATE" property="birth" />
-    <result column="is_die" jdbcType="INTEGER" property="isDie" />
     <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
-    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from world_peace
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.chen.jason.model.WorldPeace">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into world_peace (`name`, birth, is_die, 
-      is_delete, creat_time, update_time, 
-      delete_time)
-    values (#{name,jdbcType=VARCHAR}, #{birth,jdbcType=DATE}, #{isDie,jdbcType=INTEGER}, 
-      #{isDelete,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleteTime,jdbcType=TIMESTAMP})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.chen.jason.model.WorldPeace">
-    update world_peace
-    set `name` = #{name,jdbcType=VARCHAR},
-      birth = #{birth,jdbcType=DATE},
-      is_die = #{isDie,jdbcType=INTEGER},
-      is_delete = #{isDelete,jdbcType=INTEGER},
-      creat_time = #{creatTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      delete_time = #{deleteTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, `name`, birth, is_die, is_delete, creat_time, update_time, delete_time
-    from world_peace
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, `name`, birth, is_die, is_delete, creat_time, update_time, delete_time
-    from world_peace
-  </select>
+
 </mapper>

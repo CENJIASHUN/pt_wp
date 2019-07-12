@@ -9,35 +9,5 @@
     <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
     <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user_logins
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.chen.jason.model.UserLogins">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into user_logins (`uid`, register_ip, last_login_ip, 
-      register_time, last_login_time)
-    values (#{uid,jdbcType=INTEGER}, #{registerIp,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=VARCHAR}, 
-      #{registerTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.chen.jason.model.UserLogins">
-    update user_logins
-    set `uid` = #{uid,jdbcType=INTEGER},
-      register_ip = #{registerIp,jdbcType=VARCHAR},
-      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      register_time = #{registerTime,jdbcType=TIMESTAMP},
-      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, `uid`, register_ip, last_login_ip, register_time, last_login_time
-    from user_logins
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, `uid`, register_ip, last_login_ip, register_time, last_login_time
-    from user_logins
-  </select>
+
 </mapper>

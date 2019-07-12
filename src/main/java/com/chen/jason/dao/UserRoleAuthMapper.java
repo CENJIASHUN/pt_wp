@@ -1,19 +1,14 @@
 package com.chen.jason.dao;
 
 import com.chen.jason.model.UserRoleAuth;
+import com.chen.jason.model.WorldPeace;
 import org.springframework.stereotype.Component;
+import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.common.MySqlMapper;
 
 import java.util.List;
 
 @Component
-public interface UserRoleAuthMapper {
-    int deleteByPrimaryKey(Integer id);
+public interface UserRoleAuthMapper extends Mapper<UserRoleAuth>, MySqlMapper<UserRoleAuth> {
 
-    int insert(UserRoleAuth record);
-
-    UserRoleAuth selectByPrimaryKey(Integer id);
-
-    List<UserRoleAuth> selectAll();
-
-    int updateByPrimaryKey(UserRoleAuth record);
 }

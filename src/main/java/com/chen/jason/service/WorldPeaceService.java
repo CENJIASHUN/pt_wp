@@ -16,11 +16,14 @@ public class WorldPeaceService {
     private WorldPeaceMapper worldPeaceMapper;
     
     public int deleteByPrimaryKey(Integer id) {
+        worldPeaceMapper.deleteByExample(id);
+//        worldPeaceMapper.delete();
         return worldPeaceMapper.deleteByPrimaryKey(id);
     }
 
     public int insert(WorldPeace worldPeace) {
-        return worldPeaceMapper.insert(worldPeace);
+        worldPeaceMapper.insertSelective(worldPeace);
+        return worldPeaceMapper.insertSelective(worldPeace);
     }
 
     public WorldPeace selectByPrimaryKey(Integer id) {
@@ -35,4 +38,8 @@ public class WorldPeaceService {
         return worldPeaceMapper.updateByPrimaryKey(worldPeace);
     }
 
+    public List<WorldPeace> insertList(List<WorldPeace> list) {
+        worldPeaceMapper.insertList(list);
+        return worldPeaceMapper.selectAll();
+    }
 }

@@ -7,33 +7,5 @@
     <result column="role" jdbcType="VARCHAR" property="role" />
     <result column="authority" jdbcType="VARCHAR" property="authority" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user_role_auth
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.chen.jason.model.UserRoleAuth">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into user_role_auth (`uid`, `role`, authority
-      )
-    values (#{uid,jdbcType=INTEGER}, #{role,jdbcType=VARCHAR}, #{authority,jdbcType=VARCHAR}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.chen.jason.model.UserRoleAuth">
-    update user_role_auth
-    set `uid` = #{uid,jdbcType=INTEGER},
-      `role` = #{role,jdbcType=VARCHAR},
-      authority = #{authority,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, `uid`, `role`, authority
-    from user_role_auth
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, `uid`, `role`, authority
-    from user_role_auth
-  </select>
+
 </mapper>

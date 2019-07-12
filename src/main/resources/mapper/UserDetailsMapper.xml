@@ -6,46 +6,29 @@
     <result column="account" jdbcType="VARCHAR" property="account" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="idCard" jdbcType="INTEGER" property="idcard" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user_details
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.chen.jason.model.UserDetails">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into user_details (account, `password`, user_name,
-      idCard, email, `status`,
-      is_delete, delete_time)
-    values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
-      #{idcard,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
-      #{isDelete,jdbcType=VARCHAR}, #{deleteTime,jdbcType=TIMESTAMP})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.chen.jason.model.UserDetails">
-    update user_details
-    set account = #{account,jdbcType=VARCHAR},
-      `password` = #{password,jdbcType=VARCHAR},
-      user_name = #{userName,jdbcType=VARCHAR},
-      idCard = #{idcard,jdbcType=INTEGER},
-      email = #{email,jdbcType=VARCHAR},
-      `status` = #{status,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=VARCHAR},
-      delete_time = #{deleteTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, account, `password`, user_name, idCard, email, `status`, is_delete, delete_time
-    from user_details
-    where id = #{id,jdbcType=INTEGER}
-  </select>
+
   <select id="selectAllUserDetails" resultMap="BaseResultMap">
     select *
     from user_details
   </select>
+
+  <select id="userlogin" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select *
+    from user_details
+    where account = #{account} and password = #{password} and status = 0 and is_delete=0
+  </select>
+
+  <select id="selectByAccount" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select *
+    from user_details
+    where account = #{account} and status = 0 and is_delete=0
+  </select>
+
 </mapper>

@@ -8,34 +8,4 @@
     <result column="openid" jdbcType="VARCHAR" property="openid" />
     <result column="login_token" jdbcType="VARCHAR" property="loginToken" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user_auths
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.chen.jason.model.UserAuths">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into user_auths (`uid`, login_type, openid, 
-      login_token)
-    values (#{uid,jdbcType=INTEGER}, #{loginType,jdbcType=TINYINT}, #{openid,jdbcType=VARCHAR}, 
-      #{loginToken,jdbcType=VARCHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.chen.jason.model.UserAuths">
-    update user_auths
-    set `uid` = #{uid,jdbcType=INTEGER},
-      login_type = #{loginType,jdbcType=TINYINT},
-      openid = #{openid,jdbcType=VARCHAR},
-      login_token = #{loginToken,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, `uid`, login_type, openid, login_token
-    from user_auths
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, `uid`, login_type, openid, login_token
-    from user_auths
-  </select>
 </mapper>

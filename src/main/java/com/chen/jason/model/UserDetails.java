@@ -12,6 +12,8 @@ public class UserDetails implements Serializable {
 
     private String userName;
 
+    private String name;
+
     private Integer idcard;
 
     private String email;
@@ -54,6 +56,14 @@ public class UserDetails implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public Integer getIdcard() {
@@ -106,6 +116,7 @@ public class UserDetails implements Serializable {
         sb.append(", account=").append(account);
         sb.append(", password=").append(password);
         sb.append(", userName=").append(userName);
+        sb.append(", name=").append(name);
         sb.append(", idcard=").append(idcard);
         sb.append(", email=").append(email);
         sb.append(", status=").append(status);
