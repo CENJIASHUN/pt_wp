@@ -2,6 +2,7 @@ package com.chen.jason.service;
 
 import com.chen.jason.dao.UserDetailsMapper;
 import com.chen.jason.model.UserDetails;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +17,10 @@ public class UserDetailsService {
     @Autowired
     private UserDetailsMapper userDetailsMapper;
 
-    public int deleteByPrimaryKey(Integer id){
-        return userDetailsMapper.deleteByPrimaryKey(id);
-    }
-
-    public int insert(UserDetails user){
-        return userDetailsMapper.insert(user);
-    }
-
-    public UserDetails selectByPrimaryKey(Integer id){
-        return userDetailsMapper.selectByPrimaryKey(id);
+    public UserDetails selectUserById(Integer id){
+        UserDetails userDetails = new UserDetails();
+        userDetails.setId(id);
+        return userDetailsMapper.selectOne(userDetails);
     }
 
     public List<UserDetails> selectAllUserDetails(){
@@ -41,7 +36,7 @@ public class UserDetailsService {
     }
 
     public int userRegister(UserDetails userDetails) {
-        return userDetailsMapper.insert(userDetails);
+        return userDetailsMapper.insertSelective(userDetails);
     }
 
     public UserDetails selectByAccount(String account) {

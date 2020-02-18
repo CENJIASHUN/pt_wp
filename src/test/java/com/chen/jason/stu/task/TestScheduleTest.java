@@ -1,4 +1,4 @@
-package com.chen.jason.test.DingShiRenWu;
+package com.chen.jason.stu.task;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,8 +7,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * Created on 2019/7/3. By CenJS

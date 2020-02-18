@@ -1,4 +1,4 @@
-package com.chen.jason.dto;
+package com.chen.jason.model.dto;
 
 import lombok.Data;
 

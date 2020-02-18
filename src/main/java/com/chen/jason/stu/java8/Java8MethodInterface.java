@@ -1,4 +1,4 @@
-package com.chen.jason.java8;
+package com.chen.jason.stu.java8;
 
 /**
  * Created on 2019/4/4. By CenJS

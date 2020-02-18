@@ -3,15 +3,17 @@ package com.chen.jason.utils;
 import java.util.concurrent.TimeUnit;
 
 public class Enumeration {
+
+    /** 响应编码 **/
     public enum RET_CODE{
         ;
         public static final int SUCCESS = 0;
         public static final int FAIL = 1;
     }
 
+    /** 秘钥 **/
     public enum SECRET_KEY{
         ;
-        //秘钥
         public static final String KEY = "YN544knjhjUjYN544knjhjUjkj21kj21";
     }
 
@@ -19,7 +21,7 @@ public class Enumeration {
     public enum Regular{
         ;
         /** 身份证**/
-        public static final String idRegular = "(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)";
+        public static final String idCardRegular = "(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)";
         /** 手机**/
         public static final String phoneRegular = "^(13[0-913[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|17[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9]|19[0|1|2|3|5|6|7|8|9])\\d{8}$";
     }

@@ -1,4 +1,4 @@
-package com.chen.jason.java8;
+package com.chen.jason.stu.java8;
 
 import java.util.ArrayList;
 import java.util.Collections;

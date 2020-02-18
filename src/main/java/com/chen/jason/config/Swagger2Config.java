@@ -46,11 +46,11 @@ public class Swagger2Config implements WebMvcConfigurer {
     //构建 api文档的详细信息函数
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot 测试使用 Swagger2 构建RESTful API")
+                .title("UserCenter1998")
                 .termsOfServiceUrl("http://localhost/")
                 .contact("CenJS")
                 .version("1.0")
-                .description("API 描述")
+                .description("陪你 度过 漫长岁月")
                 .build();
     }
 

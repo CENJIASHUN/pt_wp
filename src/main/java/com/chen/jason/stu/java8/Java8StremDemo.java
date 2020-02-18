@@ -1,4 +1,4 @@
-package com.chen.jason.java8;
+package com.chen.jason.stu.java8;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,7 +1,6 @@
-package com.chen.jason.test.DingShiRenWu;
+package com.chen.jason.stu.task;
 
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Date;
